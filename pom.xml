@@ -1,0 +1,59 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- Module Metadata -->
+
+  <artifactId>term-matcher</artifactId>
+  <groupId>com.wcinformatics.tools</groupId>
+  <version>1.0-SNAPSHOT</version>
+  <name>Term Matcher Command Line Tool</name>
+  <description>Used to search the term-server database for concepts with a matching string.</description>
+  <packaging>pom</packaging>
+
+  <properties>
+    <!-- The terminology -->
+    <terminology></terminology>
+    <!-- The terminology version -->
+    <version></version>
+    <!-- The maximum number of return results per search term -->
+    <maxCount>2</maxCount>
+    <!-- The search Term -->
+    <searchTerm></searchTerm>
+    <!-- The search File -->
+    <searchFilePath></searchFilePath>
+    <umls.version>1.5.1-SNAPSHOT</umls.version>
+  </properties>
+
+  <profiles>
+    <profile>
+      <id>match-term</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.wcinformatics.umls.server</groupId>
+            <artifactId>term-server-admin-mojo</artifactId>
+            <version>${umls.version}</version>
+            <executions>
+              <execution>
+                <id>match-term</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>match-term</goal>
+                </goals>
+                <configuration>
+                  <terminology>${terminology}</terminology>
+                  <version>${version}</version>
+                  <maxCount>${maxCount}</maxCount>
+                  <searchTerm>${searchTerm}</searchTerm>
+                  <searchFilePath>${searchFilePath}</searchFilePath>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+</project>

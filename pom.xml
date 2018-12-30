@@ -13,6 +13,8 @@
   <packaging>pom</packaging>
 
   <properties>
+    <!-- UMLS Version to run against-->
+    <run.config></run.config>
     <!-- The terminology -->
     <terminology></terminology>
     <!-- The terminology version -->
@@ -23,6 +25,7 @@
     <searchTerm></searchTerm>
     <!-- The search File -->
     <searchFilePath></searchFilePath>
+    <!-- UMLS Version to run against-->
     <umls.version>1.5.1-SNAPSHOT</umls.version>
   </properties>
 
@@ -43,6 +46,7 @@
                   <goal>match-term</goal>
                 </goals>
                 <configuration>
+                  <runConfig>${run.config}</runConfig>
                   <terminology>${terminology}</terminology>
                   <version>${version}</version>
                   <maxCount>${maxCount}</maxCount>

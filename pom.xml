@@ -27,6 +27,10 @@
     <searchFilePath></searchFilePath>
     <!-- UMLS Version to run against-->
     <umls.version>1.5.1-SNAPSHOT</umls.version>
+    <!-- UMLS Version to run against-->
+    <user.name></user.name>
+    <!-- UMLS Version to run against-->
+    <user.pw></user.pw>
   </properties>
 
   <profiles>
@@ -52,6 +56,8 @@
                   <maxCount>${maxCount}</maxCount>
                   <searchTerm>${searchTerm}</searchTerm>
                   <searchFilePath>${searchFilePath}</searchFilePath>
+                  <userName>${user.name}</userName>
+                  <userPassword>${user.pw}</userPassword>
                 </configuration>
               </execution>
             </executions>

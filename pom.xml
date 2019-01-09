@@ -20,15 +20,15 @@
     <!-- The target terminology version to query-->
     <version></version>
     <!-- The maximum number of return results per search term -->
-    <maxCount>3</maxCount>
+    <maxCount></maxCount>
     <!-- The search term -->
     <searchTerm></searchTerm>
     <!-- The search file -->
     <searchTermsFilepath></searchTermsFilepath>
     <!-- Valid term server user name-->
-    <user.name></user.name>
+    <userName></userName>
     <!-- Valid term server user's password-->
-    <user.pw></user.pw>
+    <userPassword></userPassword>
 
 
 
@@ -59,8 +59,8 @@
                   <maxCount>${maxCount}</maxCount>
                   <searchTerm>${searchTerm}</searchTerm>
                   <searchFilePath>${searchFilePath}</searchFilePath>
-                  <userName>${user.name}</userName>
-                  <userPassword>${user.pw}</userPassword>
+                  <userName>${userName}</userName>
+                  <userPassword>${userPassword}</userPassword>
                 </configuration>
               </execution>
             </executions>

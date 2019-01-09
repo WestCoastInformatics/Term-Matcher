@@ -13,24 +13,27 @@
   <packaging>pom</packaging>
 
   <properties>
-    <!-- UMLS Version to run against-->
+    <!-- Term server to run against-->
     <run.config></run.config>
-    <!-- The terminology -->
+    <!-- The target terminology to query-->
     <terminology></terminology>
-    <!-- The terminology version -->
+    <!-- The target terminology version to query-->
     <version></version>
     <!-- The maximum number of return results per search term -->
     <maxCount>2</maxCount>
-    <!-- The search Term -->
+    <!-- The search term -->
     <searchTerm></searchTerm>
-    <!-- The search File -->
-    <searchFilePath></searchFilePath>
-    <!-- UMLS Version to run against-->
-    <umls.version>1.5.1-SNAPSHOT</umls.version>
-    <!-- UMLS Version to run against-->
+    <!-- The search file -->
+    <searchTermsFilepath></searchTermsFilepath>
+    <!-- Valid term server user name-->
     <user.name></user.name>
-    <!-- UMLS Version to run against-->
+    <!-- Valid term server user's password-->
     <user.pw></user.pw>
+
+
+
+    <!-- DO NOT CHANGE-->
+    <umls.version>1.5.1-SNAPSHOT</umls.version>
   </properties>
 
   <profiles>

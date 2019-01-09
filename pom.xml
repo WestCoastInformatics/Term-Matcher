@@ -20,7 +20,7 @@
     <!-- The target terminology version to query-->
     <version></version>
     <!-- The maximum number of return results per search term -->
-    <maxCount>2</maxCount>
+    <maxCount>3</maxCount>
     <!-- The search term -->
     <searchTerm></searchTerm>
     <!-- The search file -->

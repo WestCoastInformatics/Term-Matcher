@@ -38,7 +38,7 @@
 
   <profiles>
     <profile>
-      <id>match-term</id>
+      <id>term-match</id>
       <build>
         <plugins>
           <plugin>
@@ -58,7 +58,7 @@
                   <version>${version}</version>
                   <maxCount>${maxCount}</maxCount>
                   <searchTerm>${searchTerm}</searchTerm>
-                  <searchFilePath>${searchFilePath}</searchFilePath>
+                  <searchTermsFilepath>${searchTermsFilepath}</searchTermsFilepath>
                   <userName>${userName}</userName>
                   <userPassword>${userPassword}</userPassword>
                 </configuration>

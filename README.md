@@ -6,7 +6,7 @@ How It Works
 ------------
 The application relies upon a running instance of the West Coast Informatics Terminology Server. This instance must contain the desired version of the target terminology to match against. The user must also create a text file containing the source terms that are to be matched. At this point, the application is ready to be run.
 
-Once launched, the application will go through each line of the input file and use it to query the terminology server for the best match.  The terminology server will return the top matches as determined by its analysis. The source term and the top matches are added to an output Excel file for the user to be able to review. 
+Once launched, the application will go through each line of the input file and use it to query the terminology server for the best match.  The terminology server will return the top matches based on the terminology. If the terminology selected is NCI-Meta, then a simple search against the terminology is conducted.  For other terminologies while the search is still conducted against NCI-Meta, only those concepts with atoms in the specified terminology will be returned. Either way, the source term and the top matches are added to an output Excel file for the user to be able to review. 
 
 For each potential match, a score is provided to indicate how closely the source term matches the potential match. The score may be between 0 and 1 with 1 being a perfect match.  The first result is always the top score, with following results having either the same or lower scores.
 
@@ -23,7 +23,9 @@ There are not any default values provided in the pom.xml file.
 
 - maxCount:  This is used to specify the maximum number of matches to return per source term. If maxCount is blank or zero, all potential matches will be returned. The number of results returned will not exceed the number specified except for the case where there are more potential matches with identical scores than requested via this attribute. This is illustrated in Example-B below. An example value for this attribute is “3”.
 
-- searchTermsFilepath: This is the path and name of the file containing the list of each source term to match against. The file format is that each line contains exactly one description. If the description contains multiple words, they must be listed on the same line (where a line is ended with a line delimiter). An example value for this attribute is “inputFile.txt” whose contents are:
+- searchTerm: This is used to specify a single term to conduct a quick test. Either this field or the searchTermsFilepath may be specified. If both are specified or both are empty, an error occurs. An example value for this attribute is “Acetaminophen”.
+
+- searchTermsFilepath: This is the path and name of the file containing the list of each source term to match against. The file format is that each line contains exactly one description. If the description contains multiple words, they must be listed on the same line (where a line is ended with a line delimiter). Either this field or the searchTerm may be specified. If both are specified or both are empty, an error occurs. An example value for this attribute is “inputFile.txt” whose contents are:
 
 Acetaminophen
 Midol

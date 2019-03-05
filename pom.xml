@@ -5,34 +5,72 @@
 
   <!-- Module Metadata -->
 
+  <parent>
+    <groupId>com.wci.matcher</groupId>
+    <artifactId>term-match1</artifactId>
+    <version>0.9-SNAPSHOT</version>
+  </parent>
   <artifactId>term-matcher</artifactId>
   <groupId>com.wcinformatics.tools</groupId>
-  <version>1.0-SNAPSHOT</version>
   <name>Term Matcher Command Line Tool</name>
   <description>Used to search the term-server database for concepts with a matching string.</description>
   <packaging>pom</packaging>
 
   <properties>
-    <!-- Term server to run against-->
-    <run.config></run.config>
-    <!-- The target terminology to query-->
-    <terminology></terminology>
-    <!-- The target terminology version to query-->
-    <version></version>
+    <!-- Term server to run against -->
+    <!--
+      <run.config>C:\Code\wci\data\termserver\config-MSC-test.properties</run.config>
+
+      <run.config>C:\Code\wci\data\termserver\config-lvg-simple_loader_testing.properties</run.config>
+      -->
+
+    <terminology>SNOMEDCT</terminology>
+    <version>latest</version>
+
+
+    <!-- The target terminology to query -->
+    <!--
+
+      <terminology>RADLEX</terminology>
+      <version>3_14</version>
+    -->
+    <!--
+      <terminology>NCIMTH</terminology>
+      <version>latest</version>
+    -->
+
+    <!--
+      <terminology>NCI</terminology>
+      <version>2018_05D</version>
+    -->
+
     <!-- The maximum number of return results per search term -->
-    <maxCount></maxCount>
+    <maxCount>5</maxCount>
+
     <!-- The search term -->
-    <searchTerm></searchTerm>
+    <!--
+      <searchTerm>wheat</searchTerm>
+    -->
+
     <!-- The search file -->
-    <searchTermsFilepath></searchTermsFilepath>
-    <!-- Valid term server user name-->
+    <!--
+      <searchTermsFilepath>C:/Code/wci/data/termserver/lvg-simple_loader/testFile.txt</searchTermsFilepath>
+    -->
+    
+    <run.config>C:\Code\wci\data\termserver\config-meddra-fsns.properties</run.config>
+
+
+    <searchTermsFilepath>C:/Users/yishai/Desktop/Automations/inputFiles/meddra scope concept list 1.txt</searchTermsFilepath>
+
+    <!-- Valid term server user name -->
     <userName></userName>
-    <!-- Valid term server user's password-->
+    <!-- Valid term server user's password -->
     <userPassword></userPassword>
 
+    <meme>false</meme>
 
 
-    <!-- DO NOT CHANGE-->
+    <!-- DO NOT CHANGE -->
     <umls.version>1.5.1-SNAPSHOT</umls.version>
   </properties>
 
@@ -50,7 +88,7 @@
                 <id>match-term</id>
                 <phase>package</phase>
                 <goals>
-                  <goal>match-term</goal>
+                  <goal>meddra-match-term</goal>
                 </goals>
                 <configuration>
                   <runConfig>${run.config}</runConfig>
@@ -59,6 +97,59 @@
                   <maxCount>${maxCount}</maxCount>
                   <searchTerm>${searchTerm}</searchTerm>
                   <searchTermsFilepath>${searchTermsFilepath}</searchTermsFilepath>
+                  <userName>${userName}</userName>
+                  <userPassword>${userPassword}</userPassword>
+                  <meme>${meme}</meme>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>ecl-output</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.wcinformatics.umls.server</groupId>
+            <artifactId>term-server-admin-mojo</artifactId>
+            <version>${umls.version}</version>
+            <executions>
+              <execution>
+                <id>ecl-output</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>ecl-output</goal>
+                </goals>
+                <configuration>
+                  <runConfig>${run.config}</runConfig>
+                  <userName>${userName}</userName>
+                  <userPassword>${userPassword}</userPassword>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>neoplasm-analyzer</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.wcinformatics.umls.server</groupId>
+            <artifactId>term-server-admin-mojo</artifactId>
+            <version>${umls.version}</version>
+            <executions>
+              <execution>
+                <id>neoplasm-analyzer</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>neoplasm-analyzer</goal>
+                </goals>
+                <configuration>
+                  <runConfig>${run.config}</runConfig>
                   <userName>${userName}</userName>
                   <userPassword>${userPassword}</userPassword>
                 </configuration>

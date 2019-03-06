@@ -159,5 +159,31 @@
         </plugins>
       </build>
     </profile>
+    <profile>
+      <id>icd11-matcher</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.wcinformatics.umls.server</groupId>
+            <artifactId>term-server-admin-mojo</artifactId>
+            <version>${umls.version}</version>
+            <executions>
+              <execution>
+                <id>icd11-matcher</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>icd11-matcher</goal>
+                </goals>
+                <configuration>
+                  <runConfig>${run.config}</runConfig>
+                  <userName>${userName}</userName>
+                  <userPassword>${userPassword}</userPassword>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
   </profiles>
 </project>

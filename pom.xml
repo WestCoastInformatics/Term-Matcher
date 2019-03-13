@@ -134,7 +134,7 @@
       </build>
     </profile>
     <profile>
-      <id>neoplasm-analyzer</id>
+      <id>hierarchy-analyzer</id>
       <build>
         <plugins>
           <plugin>
@@ -143,10 +143,10 @@
             <version>${umls.version}</version>
             <executions>
               <execution>
-                <id>neoplasm-analyzer</id>
+                <id>hierarchy-analyzer</id>
                 <phase>package</phase>
                 <goals>
-                  <goal>neoplasm-analyzer</goal>
+                  <goal>hierarchy-analyzer</goal>
                 </goals>
                 <configuration>
                   <runConfig>${run.config}</runConfig>
@@ -178,6 +178,7 @@
                   <runConfig>${run.config}</runConfig>
                   <userName>${userName}</userName>
                   <userPassword>${userPassword}</userPassword>
+                  <ruleList>1,2</ruleList>
                 </configuration>
               </execution>
             </executions>
